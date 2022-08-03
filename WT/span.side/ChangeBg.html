@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div style="border: solid 2px black;">
+			<img src="background.png" id="background" style=" max-height: 90vh; width: 70%; padding-left: 150px; z-index: -1; filter: opacity(90%);">
+	</div>
+	<div style="position: fixed; top: 500px; left: 800px; border: solid 2px black; width: 40%;">
+		<button onclick="changeBG()">CHANGE-BG</button>
+	</div>
+	<script type="text/javascript">
+	var img=document.getElementById('background')
+		function changeBG() {
+			b= Math.random()
+			if (b>0 && b<0.33){
+			img.src="stone.png"	
+			}
+			else if (b>0.33 && b<0.70) {
+				img.src="paper.png"
+			}
+			else{
+				img.src="siz.png"
+			}
+		}
+	</script>
+</body>
+</html>

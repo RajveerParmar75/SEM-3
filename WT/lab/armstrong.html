@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		number=parseInt(prompt("enter num"));
+		count=parseInt(0);
+		sum=parseInt(0)
+		number2=parseInt(number);
+		while(number2>0){
+		temp=number2%10;
+		number2=parseInt(number2/10);
+		count++;
+	}
+			number2=parseInt(number);
+				while(number2>0){
+					mail=parseInt(1);
+					temp=number2%10;
+					for(i=1;i<=count;i++){
+						mail=mail*temp;
+					}
+					sum =sum+mail;
+					number2=parseInt(number2/10);
+				}
+				if (sum==number){
+					document.write("yes");
+				}
+				else{
+					document.write("no");	
+				}
+
+	</script>
+</body>
+</html>

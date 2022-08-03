@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		.button{
+			position: relative;
+			top: 300px;
+			left: 50px;
+			border: solid 2px black;
+			width: 20%;
+		}
+		button{
+			width: 90px;
+			height: 60px;
+			border-radius: 20px;
+			margin-left: 30px;
+			font-size: 40px;
+		}
+		.score {
+			border: solid 2px black;
+		}
+		.compscore{
+			padding-left: 70px;
+		}
+		.img{
+			margin-top: -30px;
+			margin-left: 900px;
+			border: solid 2px black;
+			height: 300px;
+		}
+		.allHand{
+			/*border: solid 2px black;*/
+			height: 200px;
+		}
+		.main{
+			/*border: solid 2px black;*/
+			width: 20%;
+			position: relative;
+			top: -100px;
+			left: 500px;
+		}
+		.main2{
+			/*border: solid 2px black;*/
+			width: 20%;
+			position: relative;
+			top: -310px;
+			left: 900px;	
+		}
+	</style>
+</head>
+<body>
+	<div class="score">
+		<span>YOUR SCORE:</span>
+		<span id="yourPoint">0</span>
+		<span class="compscore">COMPUTER SCORE:</span>
+		<span id="compPoint">0</span>
+	</div>
+	<div class="button">
+		<button class="choice"  onclick="play('stone')">👊🏻</button>		
+		<span>STONE</span>
+		<br>
+		<button class="choice"  onclick="play('paper')">✋🏻</button>
+		<span>PAPER</span>
+		<br>
+		<button class="choice"  onclick="play('sezzior')">✌🏻</button>
+		<span>SEZZIOR</span>
+		<br>
+		<button class="choice"  onclick="play('pencil')">👉🏻</button>
+		<span>PENCIL</span>
+	</div>
+	<div  style="width: 50%; position: relative; top: -200px; left: 600px;">
+		<img src="background.png" class="img">
+	</div>
+	<div class="main">
+		<img src="S.P.S.jpg" class="allHand" id="yourImg">
+	</div>
+	<div class="main2">
+		<img src="S.P.S.jpg" class="allHand"  id="oopImg">
+	</div>
+	<script type="text/javascript">
+		 var yourMove=document.querySelector('.choice');
+		 document.querySelector("#oopImg").style.transform = "rotate(180deg)"
+		 let opp=document.getElementById('oopImg');
+		 let myMove=document.getElementById('yourImg');
+		myPoint=0;
+		opponentPoint=0;
+		count=0;
+		var your=document.getElementById('compPoint')
+		var my=document.getElementById('yourPoint')
+		function ComputerString() {
+			 b =Math.random();
+					if (b>0 && b<0.25){
+						return "STONE";	
+					}
+
+					 else if (b>0.25 && b<0.5){
+						return "PAPER";	
+					}
+
+						else if (b>0.5 && b<0.75){
+							return "PENCIL";	
+						}
+
+					else if(b>0.75 && b<0.99999999999){
+						return "SEZZIOR";	
+					}
+		 }
+		 function play(n){
+		 	if (myPoint>=5||opponentPoint>=5) {
+		 	console.log("game over!");
+		 	}
+		 	else
+		 	{switch(ComputerString())
+		 				{
+		 			 		case "STONE":
+		 			 		console.log(opp)
+		 					opp.src="stone.png"				
+		 			 			console.log("stone");
+		 			 			if (n=="paper"){
+		 			 				myPoint++;
+		 			 				myMove.src='paper.png'
+		 			 			}
+		 			 			else if(n=="pencil"){
+		 			 				opponentPoint++;
+		 			 			}
+		 			 			else if(n=="sezzior"){
+		 			 				myPoint++;
+		 			 				myMove.src='siz.png'
+		 			 			}
+		 			 			break;
+		 			 		case "PAPER":
+		 			 			opp.src='paper.png'
+		 			 			console.log("paper");
+		 			 			if (n=="stone") {
+		 			 				opponentPoint++;
+		 			 				myMove.src='stone.png'
+		 			 			}
+		 			 			else if (n=="pencil") {
+		 			 				myPoint++;
+		 			 				// my.src='stone.png'
+		 			 			}
+		 			 			else if (n=="sezzior") {
+		 			 				myPoint++;
+		 			 				myMove.src='siz.png'
+		 			 			}
+		 			 			break;
+		 			 		case "PENCIL":
+		 			 			console.log("pencil")
+		 			 			if (n=="stone") {
+		 			 				myPoint++;
+		 			 				myMove.src='stone.png'
+		 			 			}
+		 			 			else if (n=="paper") {
+		 			 				opponentPoint++;
+		 			 				myMove.src='paper.png'
+		 			 			}
+		 			 			else if(n=="sezzior"){
+		 			 				myPoint++;
+		 			 				myMove.src='siz.png'
+		 			 			}
+		 			 			break;
+		 			 		case "SEZZIOR":
+		 			 		opp.src='siz.png'
+		 			 			console.log("sezzior");
+		 			 			if (n=="stone") {
+		 			 				myPoint++;
+		 			 				myMove.src='stone.png'
+		 			 			}
+		 			 			else if(n=="paper"){
+		 			 				opponentPoint++;
+		 			 				myMove.src='paper.png'
+		 			 			}
+		 			 			else if (n=="pencil") {
+		 			 				opponentPoint++;
+		 			 				// my.src='stone.png'
+		 			 			}
+		 			 			break;
+		 				}
+		 	}
+		 	my.innerHTML=myPoint;
+		 	your.innerHTML=opponentPoint;
+		 		console.log("my",myPoint,"computer=",opponentPoint)
+		 }
+	</script>
+</body>
+</html>

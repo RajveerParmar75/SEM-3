@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<label><h1>USER NAME</h1></label>
+				<input type="text" name="">
+		</div>
+		<div>
+		<label><h1>PASS</h1></label>
+			<input type="password" name="" id="pass">
+	</div>
+	</br>
+		<button onclick="ShowHide()">SHOW/HIDE</button>
+	</div>
+	<script type="text/javascript">
+		function ShowHide() {
+			var input=document.getElementById('pass');
+			if (input.type=="password"){
+				console.log(input.type);
+				input.type="text";
+			}
+			else{
+				input.type="password";
+			}
+		}
+	</script>
+</body>
+</html>

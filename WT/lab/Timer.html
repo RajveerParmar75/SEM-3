@@ -1,0 +1,34 @@
+<html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div>
+		<div>
+		<input type="number" name="" placeholder="ENTER YOUR TIME" id="t">
+		</div>
+		<div><h1>TIMER!</h1></div>
+		<div>
+			<button onclick="setTime()">start</button>
+		</div>
+		<br>
+		<div >
+			<h1 id="display">00</h1>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function setTime(){
+			var time=document.getElementById('t').values;
+			var dis=document.getElementById('display').innerHTML;
+			 dis=time;
+			 time.values--;
+			setInterval(setTime,1000);
+		}
+		function start(){
+		}
+	</script>
+</body>
+</html>

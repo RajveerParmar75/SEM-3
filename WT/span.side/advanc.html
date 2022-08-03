@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			background: #f2f7e7;
+			color: #38a3a5;
+			font-family: sans-serif;
+		}
+		h1{
+			font-size: 50px;
+		}
+		button{
+			height: 35px;
+			width: 80px;
+			border-radius:10px;
+			border-color: firebrick;
+			background: lightgoldenrodyellow;
+		}
+		#remove{
+			width: 200px;
+			height: 20px;
+			border-color: firebrick;
+		}
+		.name{
+			position: fixed;
+			top: 700px;
+			font-size: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div style="text-align: center;">
+	<h1>ROLLNO</h1>
+	<h1 id="dispaly"></h1><br>
+	<h4 id="abbsent">ABSENT NUM<br></h4>
+	<button id="change" onclick="changeit()">changes</button>
+	<input type="text" name="" id="remove">
+	</div>
+	<div class="name">
+		DONE BY:RAJVEER (BANNA_75🦁)
+	</div>
+	<script type="text/javascript">
+		 var dis=document.getElementById('dispaly');
+		 var abb=document.getElementById('abbsent');
+		 var rem=document.getElementById('remove');
+		var i=101;
+		var a=[]
+		document.addEventListener("keyup",function (event) {
+			if (event.keyCode === 13) {
+				dis.innerHTML=i;
+				i++;
+				if(i==166){
+					i=201;
+				}
+				else if(i==285){
+					i=301;
+				}
+				else if(i>=	312){
+					dis.innerHTML="over!"
+				}
+			}
+			else if(event.keyCode===16){
+				if(a.indexOf(dis.innerHTML)==-1){
+				a.push(dis.innerHTML);
+				abb.innerHTML=a;
+				}
+			}
+		})
+		function changeit(){
+			console.log(a.indexOf(rem.value),rem.value);
+			if(a.indexOf(rem.value)!=-1){
+			(a.splice(a.indexOf(rem.value),1));
+			}
+			abb.innerHTML=a;
+			rem.value=null;
+		}
+	</script>
+</body>
+</html>

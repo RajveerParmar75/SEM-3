@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CALC</title>
+</head>
+<body>
+		<table>
+			<tr>
+				<td colspan="4">
+					<input type="number" name="" placeholder="ENTER NUM 1" id="para1">
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="4">
+					<input type="number" name="" placeholder="ENTER NUM 2" id="para2">
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="4">
+					<input type="number" name="" placeholder="ANSWER" id="ans">
+				</td>
+			</tr>
+			<tr >
+				<td><input type="button" name="" value="+" onclick="add()"></td>
+				<td><input type="button" name="" value="-" onclick="sub()"></td>
+				<td><input type="button" name="" value="/" onclick="div()"></td>
+				<td><input type="button" name="" value="*" onclick="mul()"></td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+			function add(){
+				var a=document.getElementById("para1")
+				var b=document.getElementById("para2")
+				var c=document.getElementById("ans")
+				ans.value=(parseInt(a.value)+parseInt(b.value))
+			}
+			function sub(){
+				var a=document.getElementById("para1")
+				var b=document.getElementById("para2")
+				var c=document.getElementById("ans")
+				ans.value=(parseInt(a.value)-parseInt(b.value))
+			}
+			function div(){
+				var a=document.getElementById("para1")
+				var b=document.getElementById("para2")
+				var c=document.getElementById("ans")
+				ans.value=(parseInt(a.value)/parseInt(b.value))
+			}
+			function mul(){
+				var a=document.getElementById("para1")
+				var b=document.getElementById("para2")
+				var c=document.getElementById("ans")
+				ans.value=(parseInt(a.value)*parseInt(b.value))
+			}
+		</script>
+</body>
+</html>

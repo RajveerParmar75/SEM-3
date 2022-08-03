@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+			background: lightgoldenrodyellow;
+			color: #38a3a5;
+		}
+		#ittration,#stack,#string{
+			font-family: sans-serif;
+			font-size: 30px;
+			box-sizing: border-box;
+			float: left;
+			margin-left: 10px;
+			width: 30%;
+			text-align: center;
+			/*border: 2px solid black;*/
+		}
+		.content{
+			height: 80vh;
+			width: 30%;
+			position: fixed;
+			top: 150px;
+			left: 600px;
+			margin-top: 30px;
+			/*border: 2px solid black;*/
+		}
+		#loop{
+			text-align: center;
+			font-size: 50px;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			/*border: 2px solid black;*/
+		}
+		.data{
+			text-align: center;
+			font-size: 30px;
+			float: left;
+			width: 33%;
+			/*border: 2px solid black;*/
+		}
+		.entry{
+			width: 70%;
+			margin-left: 200px;
+			/*border: 2px solid black;*/
+		}
+		#input{
+			padding-left: 50px;
+			font-size: 25px;
+			border: 2px solid black;
+			height: 5vh;
+			width: 40%;
+			border-color: firebrick;
+		}
+		button{
+			border-radius: 7px;
+			border-color: firebrick;
+			height: 4vh;
+			width: 100px;
+			font-size: 20px;
+			font-family: sans-serif;
+			font-style: oblique;
+			background:	palegoldenrod;
+		}
+	</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="entry" >
+		<input type="text" name="" id="input" placeholder="ENTER INFIX EXPRATION">
+	<button onclick="evelpost()">postfix</button>
+	<button onclick="evelpre()">prefix</button>
+	</div>
+		<div>
+			<h1 id="loop" ></h1>
+		</div>
+	<div class="content">
+		<div class="data" id="step"></div>
+		<div class="data" id="satck"></div>
+		<div class="data" id="stringst"></div>
+	<div id="ittration">
+	</div>
+	<div id="stack">
+	</div>
+	<div id="string">
+	</div>
+	</div>
+</body>
+<script type="text/javascript">
+	function evelpost(){
+	var step=document.getElementById('step')
+	step.innerHTML="STEP";
+	var stack=document.getElementById('satck')
+	stack.innerHTML="STACK";
+	var string=document.getElementById('stringst')
+	stringst.innerHTML="STRING";
+	var num=document.getElementById('ittration');
+	var dis=document.getElementById('loop');
+	var main=document.getElementById('stack');
+	var dispaly=document.getElementById('string');
+	var	a=[];
+	var b=[];
+	var c=[];
+	var d=[];
+	var result=""
+	var i=0;
+	// var count=0
+	function Prec(n) {
+		// count++;
+		switch (n){
+			 case '+':
+            case '-':
+                return 1;
+           
+            case '*':
+            case '/':
+                return 2;
+           
+            case '^':
+                return 3;
+            }
+            return -1;
+	}
+	function infixToPostfix(n){
+		for(i;i<n.length;i++){
+			if (n.charAt(i)>='a'&& n.charAt(i)<='z'){
+			result+=n.charAt(i);
+			}
+			else if(n.charAt(i)=='('){
+				a.push(n.charAt(i));
+				 
+			}
+			else if(n.charAt(i)==')'){
+				while(a.length!=0 && a.slice(-1)!='('){
+					result+=a.pop();
+				}
+				a.pop();
+			}
+			else{
+				 // console.log(a.slice(-1));
+			while(a.length!=0 && (Prec(n.charAt(i)) <= Prec(a[a.length-1])))
+				{
+					// if(a.slice(-1)=='('){
+					// 	break;
+					// }
+					result+=a.pop();
+				}
+				a.push(n.charAt(i));
+			}
+			// console.log()
+			// console.log(count)
+			b.push(a.toString());
+			c.push(result);
+			c.push("<br>");
+			console.log(i,"stack",b,"string",c);
+			// num.innerHTML+=i;
+			d.push(i);
+			d.push("<br>");
+			b.push("<br>")
+		}
+		while(a.length!=0){
+			if(a.slice(-1)=='('){
+				alert("Invalid Expression");
+			}
+			result+=a.pop();
+			b.push(a.toString());
+			b.push("<br/>");
+			c.push(result);
+			c.push("<br/>")
+			console.log("stack",b,"string",c);
+			d.push(i);
+			d.push("<br>");
+			i++;
+			// num.innerHTML+=i;	
+		}
+			return result;
+	}
+		var input=document.getElementById('input');
+		infixToPostfix(input.value);
+		console.log(input.value);
+		dis.innerHTML=(result);
+		main.innerHTML=b.join(" ");
+		dispaly.innerHTML=c.join(" ");
+		num.innerHTML=d.join(" ");
+	}
+	//FOR PREFIX
+	function evelpre(){
+	var step=document.getElementById('step')
+	step.innerHTML="STEP";
+	var stack=document.getElementById('satck')
+	stack.innerHTML="STACK";
+	var string=document.getElementById('stringst')
+	stringst.innerHTML="STRING";
+	var num=document.getElementById('ittration');
+	var dis=document.getElementById('loop');
+	var main=document.getElementById('stack');
+	var dispaly=document.getElementById('string');
+	var result=""
+	var resultnew="";
+	var	a=[];
+	var b=[];
+	var c=[];
+	var d=[];
+	var i=0;
+	function Prec(n) {
+		switch (n){
+			 case '+':
+            case '-':
+                return 1;
+           
+            case '*':
+            case '/':
+                return 2;
+           
+            case '^':
+                return 3;
+		}
+		return -1;
+	}
+	function infixToPrefix(n){
+		var rev="";
+		for(j=n.length-1;j>=0;j--){
+			rev+=n.charAt(j);
+		}
+		console.log(rev)
+		for(i;i<rev.length;i++){
+			if (rev.charAt(i)>='a'&& rev.charAt(i)<='z'){
+			result+=rev.charAt(i);
+			}
+			else if(rev.charAt(i)==')'){
+				a.push(rev.charAt(i));
+				 
+			}
+			else if(rev.charAt(i)=='('){
+				while(a.length!=0 && a.slice(-1)!=')'){
+					result+=a.pop();
+				}
+				a.pop();
+			}
+			else{
+				while(a.length!=0 && Prec(rev.charAt(i)) <= Prec(a[a.length-1]))
+				{
+					result+=a.pop();
+				}
+				a.push(rev.charAt(i));
+			}
+			b.push(a.toString());
+			c.push(result);
+			c.push("<br>");
+			console.log(i,"stack",b,"string",c);
+			// num.innerHTML+=i;
+			d.push(i);
+			d.push("<br>");
+			b.push("<br>")
+		}
+		while(a.length!=0){
+			// if(a.slice(-1)==')'){
+			// 	alert("Invalid Expression");
+			// }
+			result+=a.pop();
+			b.push(a.toString());
+			b.push("<br/>");
+			c.push(result);
+			console.log("stack",b,"string",c);
+			d.push(i);
+			// num.innerHTML+=i;
+			
+		}
+			result.toString();
+			for(z=result.length-1;z>=0;z--){
+				resultnew+=result.charAt(z);
+			}		
+			return result;
+	}
+		
+		var input=document.getElementById('input');
+		infixToPrefix(input.value);
+		console.log(input.value);
+		dis.innerHTML=(resultnew);
+		main.innerHTML=b.join(" ");
+		dispaly.innerHTML=c.join(" ");
+		num.innerHTML=d.join(" ");
+	}
+</script>
+</html>
